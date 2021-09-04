@@ -1,4 +1,4 @@
-#sentence_reversal
+#Sentence reversal
 def reverse_words(str:str) -> str:  
   words=[]
   length = len(str)
