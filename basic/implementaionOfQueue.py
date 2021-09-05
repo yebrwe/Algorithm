@@ -21,5 +21,3 @@ q.enqueue(3)
 print(q.dequeue())
 print(q.dequeue())
 print(q.dequeue())
-
-  
