@@ -19,6 +19,8 @@ class Stack():
     self.top -= 1
     return item
   def peek(self):
+    if self.top == -1:
+      raise "스택이 비어있습니다!"
     return self.items[self.top]
   def size(self):
     return self.top + 1
