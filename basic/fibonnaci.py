@@ -41,11 +41,11 @@ t = TestCase()
 
 start = time.time()
 t.test(feb_iter)
-print("feb_iter time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
+print("feb_iter time :", time.time() - start)  # 속도 순위 2 (반복문)
 start = time.time()
 t.test(feb_rec)
-print("feb_rec time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
+print("feb_rec time :", time.time() - start)  # 속도 순위 3 (재귀)
 start = time.time()
 t.test(feb_dyn)
-print("feb_dyn time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
+print("feb_dyn time :", time.time() - start)  # 속도 순위 1 (재귀+메모이제이션)
 
