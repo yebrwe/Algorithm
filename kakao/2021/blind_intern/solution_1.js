@@ -1,3 +1,4 @@
+//1. 숫자 문자열과 영단어
 const numbers = [
     ['zero', 0],
     ['one', 1],
