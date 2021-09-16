@@ -39,6 +39,8 @@ class LinkedList {
         this.deleted[++this.deleted_top] = this.current;
         if(nextNode === this.tail) {
             this.current = prevNode;
+        }else {
+            this.current = nextNode;
         }
     }
 
@@ -51,13 +53,13 @@ class LinkedList {
     }
 
     next() {
-        if(this.current === this.tail) throw 'current node is tail.';
+        if(this.current.next === this.tail) return;//throw 'current node is tail.';
         this.current = this.current.next;
         return this;
     }
 
     prev() {
-        if(this.current === this.head) throw 'current node is head.';
+        if(this.current.prev === this.head) return;//throw 'current node is head.';
         this.current = this.current.prev;
         return this;
     }
