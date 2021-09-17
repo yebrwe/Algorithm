@@ -1,87 +1,107 @@
-const deleted = Array.from(Array(1000000).fill(0));
-let deleted_top = -1;
+//==========================================
+//Linked List
+//author: hklee
+//date: 2021.09.17
+//github: http://github.com/yebrwe/Algorithm
+//==========================================
+class LinkedList {
+    constructor(arr) {
+        this.head = new Node(-1);
+        this.tail = new Node(-1);
+        this.head.next = this.tail;
+        this.tail.prev = this.head;
+        this.deleted = Array.from(Array(1000000).fill(0));
+        this.deleted_top = -1;
+        this.current = this.head;
 
-function move(node, dir, n) {
-    let targetNode = node;
-    for(let i=0; i<n; i++) {
-        if(dir === 'U') {
-            if(!targetNode.prev) break;
-            targetNode = targetNode.prev;
-        }else if(dir === 'D') {
-            if(!targetNode.next) break;
-            targetNode = targetNode.next;
+        if(!arr) return;
+        for(const o of arr) {
+            this.add(o);
+        }
+        this.current = this.head;
+    }
+    add(value) {
+        const newNode = new Node(value);
+        const currentPrevNode = this.current;
+        const currentNextNode = this.current.next;
+        newNode.prev = currentPrevNode;
+        newNode.next = currentPrevNode.next;
+        currentPrevNode.next = newNode;
+        currentNextNode.prev = newNode;
+        this.current = newNode;
+    }
+    remove() {
+        if(this.current === this.head || this.current === this.tail) return;
+        const prevNode = this.current.prev;
+        const nextNode = this.current.next;
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+        this.deleted[++this.deleted_top] = this.current;
+        if(nextNode === this.tail) {
+            this.current = prevNode;
+        }else {
+            this.current = nextNode;
         }
     }
-    return targetNode;
-}
 
-function remove(node){
-    const prevNode = node.prev;
-    const nextNode = node.next;
-    if(prevNode) prevNode.next = nextNode;
-    if(nextNode) nextNode.prev = prevNode;    
-    
-    //되돌리기 관련 로직 추가할것!
-    deleted[++deleted_top]=node;
-    return nextNode ? nextNode : prevNode;
+    restore() {
+        if(this.deleted_top === -1) return;
+        const node = this.deleted[this.deleted_top--];
+        const prevNode = node.prev;
+        const nextNode = node.next;
+        prevNode.next = nextNode.prev = node;
+    }
+
+    next() {
+        if(this.current.next === this.tail) return;//throw 'current node is tail.';
+        this.current = this.current.next;
+        return this;
+    }
+
+    prev() {
+        if(this.current.prev === this.head) return;//throw 'current node is head.';
+        this.current = this.current.prev;
+        return this;
+    }
 }
-function undo() {
-    if(deleted_top === -1) return;
-    const node = deleted[deleted_top--];
-    const prevNode = node.prev;
-    const nextNode = node.next;
-    
-    if(prevNode) prevNode.next = node;
-    if(nextNode) nextNode.prev = node;
+class Node {
+    constructor(value) {
+        this.prev = null;
+        this.next = null;
+        this.value = value;
+    }
+}
+function range(n) {
+    return Array.from(Array(n).fill(0).map((_, i)=>i))
 }
 function solution(n, k, cmd) {
-    let answer = '';
-    //----HEAD----
-    const head = {
-        prev: null,
-        next: null,
-        position: -1,
-    };
-    let node = head;
-    let prevNode = node;
-    for(let i=0; i<n; i++) {
-        node.next = {
-            prev: node,
-            next: null,
-            position: i,
-        };
-        prevNode = node;
-        node = node.next;
-    }
-    //----TAIL----
-    node = {
-        prev: prevNode,
-        next: null,
-        position: -1,
-    }
-    let selectNode = head;
+    const arr = range(n);
+    const list = new LinkedList(arr);
+    list.current = list.head.next;
     while(true) {
-        if(selectNode.position === k) break;
-        selectNode = selectNode.next;
+        if(list.current.value === k) break;
+        list.next();
     }
     
     for(const c of cmd) {
         if(c === 'Z') {
-            undo();
+            list.restore();
         }else if(c === 'C') {
-            selectNode = remove(selectNode);
+            list.remove();
         } else {    // 'U'  or  'D'
             const [dir, n] = c.split(' ');
-            selectNode = move(selectNode, dir, n);
+            for(let i=0; i<n; i++) {
+                if(dir === 'U') list.prev();
+                if(dir === 'D') list.next();
+            }
         }
     }
-    let current_node = head.next;
+    let answer = '';
+    list.current = list.head.next;
     for(let i=0; i<n; i++) {
-        if(current_node.position === i) {
+        if(list.current.value === i) {
             answer += 'O';
-            if(current_node.next) {
-                current_node = current_node.next;    
-            }
+            list.next();
         } else {
             answer += 'X';
         }
