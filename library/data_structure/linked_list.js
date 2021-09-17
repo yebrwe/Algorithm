@@ -53,13 +53,13 @@ class LinkedList {
     }
 
     next() {
-        if(this.current.next === this.tail) return;//throw 'current node is tail.';
+        if(this.current.next === this.tail) return;
         this.current = this.current.next;
         return this;
     }
 
     prev() {
-        if(this.current.prev === this.head) return;//throw 'current node is head.';
+        if(this.current.prev === this.head) return;
         this.current = this.current.prev;
         return this;
     }
