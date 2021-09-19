@@ -10,7 +10,6 @@ def dijkstra(start)->int:
     dist[start]=0
     heapq.heappush(heap, (start, 0)) # heap -> start, distance
 
-    edges = {}
     for s,e,w in roads:
         adj[s].append((e, w))
 
