@@ -4,6 +4,7 @@ N = 3
 INF = 10**8 + 10
 dist = [INF] * (N+1)   #minium distance
 roads = [[1, 2, 2], [2, 3, 3]]  #start, end, distance
+adj = [[] for _ in range(1004)]
 def dijkstra(start)->int:
     heap = []
     dist[start]=0
@@ -11,16 +12,14 @@ def dijkstra(start)->int:
 
     edges = {}
     for s,e,w in roads:
-        edges[s] = (e, w)
+        adj[s].append((e, w))
 
     while len(heap) > 0:
         u, w = heapq.heappop(heap)
 
-        if dist[u] < w:
-            continue
+        if dist[u] < w: continue
 
-        for k in edges:
-            v, ww = edges[k]
+        for v, ww in adj[u]:
             www = w+ww
             if dist[v] > www:
                 dist[v] = www
