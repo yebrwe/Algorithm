@@ -2,7 +2,7 @@ const N = 5;
 const M = 5;
 const dx = [0,-1,0,1];
 const dy = [-1,0,1,0];
-const visited = Array.from(Array(N).fill(Array(M).fill(false)));
+const visited = Array.from(new Array(M)).map( _ => Array.from(Array(N).fill(false)));
 const dist = [
     ['O', 'X', 'X', 'X', 'X'],
     ['O', 'O', 'X', 'X', 'X'],
@@ -14,18 +14,21 @@ const dist = [
 
 function bfs() {
     const q = []
+    visited[0][0] = true;
     q.push([0,0,0]);
     while(q.length > 0){
         const [x, y, len] = q.pop();
         for(let i=0; i<4; i++) {
             const px = dx[i] + x;
             const py = dy[i] + y;
-
-            if(px < 0 || py < 0 || px > N || py > N) continue;
+            if(px < 0 || py < 0 || px > N || py > M) continue;
             if(visited[px][py]) continue;
-            if(px == N-1 && py == M-1) return len + 1;
+            if(px == N-1 && py == M-1) {
+                visited[px][py] = true;
+                return len + 1;
+            }
             if(dist[px][py] == 'O') {
-                q.push([px, py, len+1]);
+                q.unshift([px, py, len+1]);
                 visited[px][py] = true;
             }
         }
@@ -34,3 +37,4 @@ function bfs() {
 }
 
 console.log(bfs());
+console.log(visited);
