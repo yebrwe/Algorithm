@@ -1,11 +1,18 @@
-const N, M = 5;
+const N = 5;
+const M = 5;
 const dx = [0,-1,0,1];
 const dy = [-1,0,1,0];
 const visited = Array.from(Array(N).fill(Array(M).fill(false)));
-const dist = [];
+const dist = [
+    ['O', 'X', 'X', 'X', 'X'],
+    ['O', 'O', 'X', 'X', 'X'],
+    ['X', 'O', 'O', 'O', 'X'],
+    ['X', 'X', 'X', 'O', 'X'],
+    ['X', 'X', 'X', 'O', 'O'],
+];
 //길 O, 벽 X, 시작 P
 
-function bfs(coord) {
+function bfs() {
     const q = []
     q.push([0,0,0]);
     while(q.length > 0){
@@ -25,3 +32,5 @@ function bfs(coord) {
     }
     return -1;
 }
+
+console.log(bfs());
