@@ -1,16 +1,16 @@
-# s = input()
-s = '()(((()())(())()))(())'
+s = input()
 stack = []
-total_count = 0
-count = 0
+prev = ''
+sum = 0
 for letter in s:
     if letter == '(':
         stack.append(letter)
-    elif len(stack) == 1 and stack[-1] == '(' and letter == ')' and count > 0: #Bar
+    elif prev == '(' and letter == ')':
         stack.pop()
-    else: #Laser
+        sum += len(stack)
+    elif letter == ')':
         stack.pop()
-        count += 1
+        sum += 1
+    prev = letter
+print(sum)
 
-
-print(count)
