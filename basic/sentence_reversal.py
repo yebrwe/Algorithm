@@ -35,7 +35,5 @@ def my_reversed_using_stack(arr:List[str]) -> List[str]:
   while len(stack) > 0:
     new_arr.append(stack.pop())
   return new_arr
-  
-
 
 print(reverse_words("Hello World"))
