@@ -1,9 +1,8 @@
 class Node:
-  def __init__(self, value) -> None:
-      self.next = None
-      self.prev = None
-      self.value = value
-      
+  def __init__(self, value):
+    self.prev = None
+    self.next = None
+    self.value = value
 
 n = int(input())
 for _ in range(n):
@@ -13,33 +12,49 @@ for _ in range(n):
   tail.prev = head
   current = head
 
-  for c in input():
+  log = input()
+  for c in log:
     if c == '<':
-      if current.prev: current = current.prev
+      if current.prev: 
+        current = current.prev
     elif c == '>':
-      if current.next: current = current.next
+      if current.next: 
+        current = current.next
     elif c == '-':
+      if current == head or current == tail: continue
       prevNode = current.prev
       nextNode = current.next
-      if prevNode: prevNode.next = nextNode
-      if nextNode: nextNode.prev = prevNode
-    else:
-      newNode = Node(c)      
-      nextNode = current.next
-      
-      current.next = newNode
-      newNode.prev= current
+      prevNode.next = nextNode
+      nextNode.prev = prevNode
 
-      newNode.next = nextNode
-      if nextNode: nextNode.prev = newNode
-      else: current.prev.next = newNode
+      if nextNode == tail: current = prevNode
+      elif prevNode == head: current = nextNode
+      else: current = prevNode
+    else:
+      newNode = Node(c)
+      if current == head:
+        nextNode = head.next
+        head.next = newNode
+        nextNode.prev = newNode
+        newNode.next = nextNode
+        newNode.prev = head
+      elif current == tail:
+        prevNode = tail.prev
+        tail.prev = newNode
+        prevNode.next = newNode
+        newNode.prev = prevNode
+        newNode.next = tail
+      else:
+        nextNode = current.next
+        current.next = newNode
+        newNode.prev = current
+        newNode.next = nextNode
+        nextNode.prev = newNode
       current = newNode
   
-  
-  result = ''
-  while node != tail:
-    result += node.value
-    node = node.next
-  result += node.value
-  print(result)
-      
+  password = ''
+  node = head.next
+  while node.next:
+      password += node.value
+      node = node.next
+  print(password)
