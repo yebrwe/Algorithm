@@ -1,3 +1,4 @@
+import sys
 class Node:
   def __init__(self, value):
     self.prev = None
@@ -5,14 +6,14 @@ class Node:
     self.value = value
 
 n = int(input())
-for _ in range(n):
+logs = [sys.stdin.readline().rstrip() for _ in range(n)]
+for log in logs:
   head = Node(-1)
   tail = Node(-1)
   head.next = tail
   tail.prev = head
   current = head
 
-  log = input()
   for c in log:
     if c == '<':
       if current.prev: 
@@ -29,7 +30,7 @@ for _ in range(n):
 
       if nextNode == tail: current = prevNode
       elif prevNode == head: current = nextNode
-      else: current = prevNode
+      else: current = nextNode
     else:
       newNode = Node(c)
       if current == head:
