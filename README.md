@@ -9,7 +9,7 @@
 ---
 ## 못푼 문제들
 
-[kakao / 2018 / blind_recruitment / 다트게임](https://programmers.co.kr/learn/courses/30/lessons/17682){:target="_blank"}
+[kakao / 2018 / blind_recruitment / 다트게임](https://programmers.co.kr/learn/courses/30/lessons/17682 "Test")
 
 [kakao / 2020 / blind_recruitment / 자물쇠와열쇠](https://programmers.co.kr/learn/courses/30/lessons/60059){:target="_blank"}
 
