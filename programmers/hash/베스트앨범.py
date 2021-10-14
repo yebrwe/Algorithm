@@ -14,7 +14,7 @@ def solution(genres, plays):
             sum[g] += p
 
     for k in sorted(sum, key=lambda x: -sum[x]):
-        answer += [i for v, i in sorted(album[k], key = lambda x: -x[0])[:2]]
+        answer += [i for _, i in sorted(album[k], key = lambda x: -x[0])[:2]]
     return answer
 
 
