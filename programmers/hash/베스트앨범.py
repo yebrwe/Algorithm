@@ -20,4 +20,5 @@ def solution(genres, plays):
 
 
 print(solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500]))
+print(solution(["classic", "pop", "classic", "classic", "pop", "test"], [500, 600, 150, 800, 2500, 100]))
 print(solution(["classic"], [300]))
