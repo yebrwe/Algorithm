@@ -1,7 +1,7 @@
 def solution(dartResult):
     oper = {'S': 1, 'D': 2, 'T': 3}
     score = ''
-    rounds = []
+    rounds = []    
     for c in dartResult:
         if c in oper:
             rounds.append(int(score) ** oper[c])
