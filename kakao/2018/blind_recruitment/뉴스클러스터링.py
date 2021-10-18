@@ -1,24 +1,15 @@
+from collections import Counter
 def solution(str1, str2):
     if str1.lower() == str2.lower(): return 65536
-    str1_multi_set = to_multi_set(str1.lower())
-    str2_multi_set = to_multi_set(str2.lower())
-    
-    union = str2_multi_set.copy()
-    for v in str1_multi_set:
-        if v not in str2_multi_set:
-            union.append(v)
+    str1_counter = Counter(to_multiset(str1.lower()))
+    str2_counter = Counter(to_multiset(str2.lower()))
 
-    inter = []
-    for v in str1_multi_set:
-        if v in str2_multi_set:
-            inter.append(v)
-
-    union_len = len(union)
-    inter_len = len(inter)
+    union_len = len(list((str1_counter | str2_counter).elements()))
+    inter_len = len(list((str1_counter & str2_counter).elements()))
     if union_len == 0: return 1
     return int(inter_len / union_len * 65536)
 
-def to_multi_set(str):
+def to_multiset(str):
     s = []
     l = len(str)
     for i, _ in enumerate(str):
