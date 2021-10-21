@@ -1,4 +1,3 @@
-from collections import Counter
 def solution(m, n, board):
     answer = 0
     map = [[board[i][j] for j in range(n)] for i in range(m) ]
