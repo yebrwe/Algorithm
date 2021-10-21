@@ -25,5 +25,3 @@ def shift_array_to_top(arr):
         for j in range(n):
             if i+1 > n-1: continue
             arr[i][j], arr[i+1][j] = arr[i+1][j], arr[i][j]
-
-def print_number_array
