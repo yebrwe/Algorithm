@@ -1,3 +1,4 @@
+# 10진수 -> 2진수 변환
 def to_bin(n):
     bin = ''
     while n > 0:
