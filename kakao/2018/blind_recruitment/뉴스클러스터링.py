@@ -39,6 +39,19 @@ def to_set(str):
                 s[str[i:i+2]] += 1
     return s
 
+def another_solution(str1, str2):
+    str1_multiset = to_multiset(str1.lower())
+    str2_multiset = to_multiset(str2.lower())
+
+    union = set(str1_multiset) | set(str2_multiset)
+    inter = set(str1_multiset) & set(str2_multiset)
+
+    union_len = sum([max(str1_multiset.count(c), str2_multiset.count(c)) for c in union])
+    inter_len = sum([min(str1_multiset.count(c), str2_multiset.count(c)) for c in inter])
+
+    if union_len == 0: return 65536
+    return int(inter_len / union_len * 65536)
+
 def to_multiset(str):
     s = []
     l = len(str)
