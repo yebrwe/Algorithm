@@ -19,7 +19,6 @@ def solution(m, musicinfos):
         play_time = get_between(start, end)
         melody_time = len(melody)
         played_melody = (melody * (play_time // melody_time + 1))[:play_time]
-        print(played_melody)
         if m in played_melody:
             arr.append([title, play_time])
     if len(arr) == 0: return '(None)'
