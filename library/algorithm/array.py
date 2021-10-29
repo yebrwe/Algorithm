@@ -1,6 +1,9 @@
 # python 기본 배열로 큐를 사용하면 매우 느리므로 deque 라이브러리를 사용할 것
 from collections import deque
 
+# 이진검색 라이브러리
+import bisect
+
 # 시계 방향으로 90도 회전
 def rotate90(arr):
     n = len(arr)

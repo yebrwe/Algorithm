@@ -1,34 +1,34 @@
+import bisect
 def solution(info, query):
     answer = []
-    hash = {}
+    hash = make_hash()
     for row in info:
         [lang, job, grade, food, score] = row.split(" ")
-        if '-' not in hash:
-            hash['-'] = [int(score)]
-        else:
-            hash['-'].append(int(score))
-        make(hash, [lang, job, grade, food], int(score))    
-    for row in query:
-        search = hash
-        new_row = row.replace(" and ", " ").split(" ")
-        for k in [k for k in new_row[:-1] if k != '-']:
-            search = search[k]
-        if 'value' in search:
-            answer.append(len([v for v in search['value'] if v >= int(new_row[-1])]))
-        else:
-            answer.append(len([v for v in search['-'] if v >= int(new_row[-1])]))
-            
+        score = int(score)
+        for a in [lang, '-']:
+            for b in [job, '-']:
+                for c in [grade, '-']:
+                    for d in [food, '-']:
+                        hash[a+b+c+d].append(score)
+
+    for a in hash.values():
+        a.sort()
+
+    for q in query:
+        [a, b, c, d, score] = q.replace(' and ', ' ').split(' ')
+        score = int(score)
+        arr = hash[a+b+c+d]
+        answer.append(len(arr) - bisect.bisect_left(arr, score))
     return answer
 
-def make(hash, keys, score):
-    if len(keys) == 0: return
-    for i, key in enumerate(keys):
-        if key not in hash:
-            hash[key] = { 'value': [ score ] }
-        else:
-            hash[key]['value'].append(score)
-        make(hash[key], keys[i+1:], score)
-
+def make_hash():
+    hash = {}
+    for a in ['cpp', 'java', 'python', '-']:
+        for b in ['backend', 'frontend', '-']:
+            for c in ['junior', 'senior', '-']:
+                for d in ['chicken', 'pizza', '-']:
+                    hash[a+b+c+d] = []
+    return hash
 print(
     solution(
         ["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"],
