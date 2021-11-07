@@ -1,8 +1,6 @@
 def solution(stones, k):
-    left, right = 1, max(stones) + 1
+    left, right = 1, max(stones)
     while left < right:
-        print(left, right)
-        
         mid = (left + right) // 2
         if test(stones, k, mid):
             left = mid + 1
