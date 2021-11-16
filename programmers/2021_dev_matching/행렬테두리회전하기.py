@@ -3,26 +3,27 @@ def solution(rows, columns, queries):
     matrix = [[ columns*(i-1) + j for j in range(1, columns+1) ] for i in range(1, rows+1)]
     
 
-    for x1,y1,x2,y2 in queries:
-        tmp = matrix[x1-1][y1-1]
+    for t,l,b,r in queries:
+        top, left, bottom, right = t-1, l-1, b-1, r-1
+        tmp = matrix[top][left]
         minimum = tmp
-        for x in range(x1-1, x2-1):
-            matrix[x][y1-1] = matrix[x+1][y1-1]
-            if minimum > matrix[x+1][y1-1]:
-                minimum = matrix[x+1][y1-1]
-        for y in range(y1-1, y2-1):
-            matrix[x2-1][y] = matrix[x2-1][y+1]
-            if minimum > matrix[x2-1][y+1]:
-                minimum = matrix[x2-1][y+1]
-        for x in range(x2-1, x1-1, -1):
-            matrix[x][y2-1] = matrix[x-1][y2-1]
-            if minimum > matrix[x-1][y2-1]:
-                minimum = matrix[x-1][y2-1]
-        for y in range(y2-1, y1-1, -1):
-            matrix[x1-1][y] = matrix[x1-1][y-1]
-            if minimum > matrix[x1-1][y-1]:
-                minimum = matrix[x1-1][y-1]
-        matrix[x1-1][y1] = tmp
+        for r in range(top, bottom):
+            matrix[r][left] = matrix[r+1][left]
+            if minimum > matrix[r+1][left]:
+                minimum = matrix[r+1][left]
+        for c in range(left, right):
+            matrix[bottom][c] = matrix[bottom][c+1]
+            if minimum > matrix[bottom][c+1]:
+                minimum = matrix[bottom][c+1]
+        for r in range(bottom, top, -1):
+            matrix[r][right] = matrix[r-1][right]
+            if minimum > matrix[r-1][right]:
+                minimum = matrix[r-1][right]
+        for c in range(right, left, -1):
+            matrix[top][c] = matrix[top][c-1]
+            if minimum > matrix[top][c-1]:
+                minimum = matrix[top][c-1]
+        matrix[top][left+1] = tmp
         answer.append(minimum)
     return answer
 
