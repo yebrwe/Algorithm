@@ -17,3 +17,4 @@
 | :heavy_check_mark: | 단어 뒤집기 2 |
 | :heavy_check_mark: | 쇠막대기 |
 | :heavy_check_mark: | 오큰수 |
+| :heavy_check_mark: | 오등큰수 |
