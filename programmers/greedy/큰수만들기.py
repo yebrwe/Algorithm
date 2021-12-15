@@ -1,19 +1,20 @@
 def solution(number, k):
-    max_number = find_max(number, k, 0)
-    return str(max_number)
-def find_max(number, k, n, result=0, visited=[]):
-    if number in visited:
-        return result
-    visited += [number]
-    if k==n:
-        if result < int(number):
-            return int(number)
-        return result
-    for i in range(len(number)):
-        result = find_max(number[:i] + number[i+1:], k, n+1, result, visited)
-    return result
-    
-
+    stack = []
+    cnt=0
+    for n in number:
+        if not stack:
+            stack.append(n)
+        else:
+            while stack and stack[-1] < n:
+                if cnt == k: break
+                stack.pop()
+                cnt+=1
+            stack.append(n)
+    return ''.join(stack[:len(number)-k])
+        
+        
+        
+        
 
 print(solution("1924",	2)==	"94")
 print(solution("1231234",	3)==	"3234")
