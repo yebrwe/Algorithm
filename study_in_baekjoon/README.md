@@ -9,9 +9,10 @@
 | :heavy_check_mark: | 에디터 |
 
 |:interrobang:|:clock9: 2021-12-14|
+|:-:|:-:|
 | :heavy_check_mark: | 큐 |
 | :heavy_check_mark: | 조세퍼스 문제 |
-| :heavy_check_mark: | 덱 |
+| :heavy_check_mark: | 덱 |\\
 ## 201 - 자료구조 1(연습)
 |:interrobang:|:clock9: 2021-12-14|
 |:-:|:-:|
