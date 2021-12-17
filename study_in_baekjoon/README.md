@@ -19,12 +19,25 @@
 | :heavy_check_mark: | 오큰수 |
 | :heavy_check_mark: | 오등큰수 |
 ## 203 - 자료구조 1(참고)
+|:interrobang:|:clock9: 2021-12-17|
+|:-:|:-:|
 | :heavy_check_mark: | 후위 표기식2 |
-|  | 후위 표기식 |
-|  | 알파벳 개수 |
-|  | 알파벳 찾기 |
-|  | 문자열 분석 |
-|  | 단어 길이 재기 |
-|  | ROT13 |
-|  | 네 수 |
-|  | 접미사 배열 |
+| :heavy_check_mark: | 후위 표기식 |
+| :heavy_check_mark: | 알파벳 개수 |
+| :heavy_check_mark: | 알파벳 찾기 |
+| :heavy_check_mark: | 문자열 분석 |
+| :heavy_check_mark: | 단어 길이 재기 |
+| :heavy_check_mark: | ROT13 |
+| :heavy_check_mark: | 네 수 |
+| :heavy_check_mark: | 접미사 배열 |
+## 300 - 수학 1
+|:-:|:-:|
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
