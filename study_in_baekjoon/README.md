@@ -7,6 +7,7 @@
 | :heavy_check_mark: | 괄호 |
 | :heavy_check_mark: | 스택 수열 |
 | :heavy_check_mark: | 에디터 |
+
 |:interrobang:|:clock9: 2021-12-14|
 | :heavy_check_mark: | 큐 |
 | :heavy_check_mark: | 조세퍼스 문제 |
@@ -31,10 +32,11 @@
 | :heavy_check_mark: | 네 수 |
 | :heavy_check_mark: | 접미사 배열 |
 ## 300 - 수학 1
+|:interrobang:|:clock9: 2021-12-17|
 |:-:|:-:|
-|  |  |
-|  |  |
-|  |  |
+| :heavy_check_mark: | 나머지 |
+| :heavy_check_mark: | 최대공약수와 최소공배수 |
+| :heavy_check_mark: | 최소공배수 |
 |  |  |
 |  |  |
 |  |  |
