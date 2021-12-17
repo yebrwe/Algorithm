@@ -11,21 +11,14 @@ result = ''
 stack=[]
 for o in s:
     if o in opt:
-        if not stack:
+        if o == ')':
+            while stack and stack[-1] != '(':
+                result += stack.pop()
+            stack.pop()
+        else:
+            while stack and opt[stack[-1]] >= opt[o] and stack[-1] != '(':
+                result += stack.pop()
             stack.append(o)
-        else:            
-            if o == ')':
-                while stack:
-                    if stack[-1] == '(':
-                        stack.pop()
-                        break
-                    result += stack.pop()
-            elif opt[stack[-1]] < opt[o] or opt[stack[-1]] > opt[o]:
-                stack.append(o)
-            else:
-                while stack:
-                    result += stack.pop()
-                stack.append(o)
     else:
         result += o
 while stack:
