@@ -46,9 +46,11 @@
 | :heavy_check_mark: |         나머지          |
 | :heavy_check_mark: | 최대공약수와 최소공배수 |
 | :heavy_check_mark: |       최소공배수        |
-| :heavy_check_mark: |        소수찾기         |
-| :heavy_check_mark: |       소수구하기        |
-|                    |                         |
-|                    |                         |
-|                    |                         |
-|                    |                         |
+
+| :interrobang: | :clock9: 2021-12-18 |
+| :heavy_check_mark: | 소수찾기 |
+| :heavy_check_mark: | 소수구하기 |
+| | |
+| | |
+| | |
+| | |
