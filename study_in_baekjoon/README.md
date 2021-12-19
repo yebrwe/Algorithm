@@ -50,6 +50,9 @@
 | :interrobang: | :clock9: 2021-12-18 |
 | :heavy_check_mark: | 소수찾기 |
 | :heavy_check_mark: | 소수구하기 |
+
+| :interrobang: | :clock9: 2021-12-19 |
+| :heavy_check_mark: | 골드바흐의 추측 |
 | | |
 | | |
 | | |
