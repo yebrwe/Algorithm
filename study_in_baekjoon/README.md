@@ -53,7 +53,8 @@
 
 | :interrobang: | :clock9: 2021-12-19 |
 | :heavy_check_mark: | 골드바흐의 추측 |
-| | |
-| | |
-| | |
-| | |
+
+| :interrobang: | :clock9: 2021-12-21 |
+| :heavy_check_mark: | 팩토리얼 |
+| :heavy_check_mark: | 팩토리얼 0의 개수 |
+| :heavy_check_mark: | 조합 0의 개수 |
