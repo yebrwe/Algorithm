@@ -18,3 +18,10 @@ def convert(n, k):
         notation = str(mod if mod < 10 else hex(mod)[2:]).upper() + notation
         n = div
     return notation
+
+# 이항계수 구하기
+def 이항계수(n):
+    b=[0]*n
+    for i in range(1, n-1):
+        b[i]=b[i-1]*(n-i)//i
+    return b
